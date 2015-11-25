@@ -75,19 +75,40 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DB_Gerenciamento-de-Carros.mdf" />
+    <Content Include="App_Data\DB_Gerenciamento-de-Carros_log.ldf">
+      <DependentUpon>DB_Gerenciamento-de-Carros.mdf</DependentUpon>
+    </Content>
+    <Content Include="Forms\Carro.aspx" />
+    <Content Include="Forms\Visualizar.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CarroBO.cs" />
+    <Compile Include="Classes\CarroDAO.cs" />
+    <Compile Include="Forms\Carro.aspx.cs">
+      <DependentUpon>Carro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Carro.aspx.designer.cs">
+      <DependentUpon>Carro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Visualizar.aspx.cs">
+      <DependentUpon>Visualizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Visualizar.aspx.designer.cs">
+      <DependentUpon>Visualizar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Carro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
