@@ -11,7 +11,9 @@ namespace Gerenciamento_de_Carros.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            List<Carro> c = BuascarCarros();
+            Repeater1.DataSource = 1;
+            Repeater1.DataBind();
         }
     }
 }
