@@ -79,7 +79,7 @@
     <Content Include="App_Data\DB_Gerenciamento-de-Carros_log.ldf">
       <DependentUpon>DB_Gerenciamento-de-Carros.mdf</DependentUpon>
     </Content>
-    <Content Include="Forms\Carro.aspx" />
+    <Content Include="Forms\Carros.aspx" />
     <Content Include="Forms\Visualizar.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Styles\style.css" />
@@ -88,12 +88,12 @@
   <ItemGroup>
     <Compile Include="Classes\CarroBO.cs" />
     <Compile Include="Classes\CarroDAO.cs" />
-    <Compile Include="Forms\Carro.aspx.cs">
-      <DependentUpon>Carro.aspx</DependentUpon>
+    <Compile Include="Forms\Carros.aspx.cs">
+      <DependentUpon>Carros.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Carro.aspx.designer.cs">
-      <DependentUpon>Carro.aspx</DependentUpon>
+    <Compile Include="Forms\Carros.aspx.designer.cs">
+      <DependentUpon>Carros.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Visualizar.aspx.cs">
       <DependentUpon>Visualizar.aspx</DependentUpon>

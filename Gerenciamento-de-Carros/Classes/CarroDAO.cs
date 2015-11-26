@@ -14,23 +14,23 @@ namespace Gerenciamento_de_Carros.Classes
 
         private SqlConnection conexao;
 
-        CarroDAO()
+        public CarroDAO()
         {
             conexao = new SqlConnection();
         }
 
-        public void abrirConexao()
+        public void AbrirConexao()
         {
             conexao.ConnectionString = ConfigurationManager.ConnectionStrings["Conexao"].ConnectionString;
             conexao.Open();
         }
 
-        public void fecharConexao()
+        public void FecharConexao()
         {
             conexao.Close();
         }
 
-        private Carro retornarCarro(int id)
+        public Carro retornarCarro(int id)
         {
             Carro c = null;
 
@@ -66,7 +66,7 @@ namespace Gerenciamento_de_Carros.Classes
             return c;
         }
 
-        private int inserir(Carro carro)
+        public int Inserir(Carro carro)
         {
             int qtdRegistrosAfetados = 0;
 
@@ -109,7 +109,7 @@ namespace Gerenciamento_de_Carros.Classes
 
         }
 
-        private int atualizar(Carro carro)
+        public int atualizar(Carro carro)
         {
             int qtdRegistrosAfetados = 0;
 
@@ -156,7 +156,7 @@ namespace Gerenciamento_de_Carros.Classes
 
         }
 
-        private List<Carro> RetornarCarros()
+        public List<Carro> RetornarCarros()
         {
             List<Carro> carros = null;
 
@@ -193,6 +193,27 @@ namespace Gerenciamento_de_Carros.Classes
             }
 
             return carros;
+        }
+
+        public int deletar(int idCarro)
+        {
+            int qtdRegistrosAfetados = 0;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Carro WHERE Id = @Id");
+
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = conexao;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = sb.ToString();
+
+            SqlParameter param1 = new SqlParameter("@Id", idCarro);
+
+            comando.Parameters.Add(param1);
+
+            qtdRegistrosAfetados = comando.ExecuteNonQuery();
+
+            return qtdRegistrosAfetados;
         }
 
     }

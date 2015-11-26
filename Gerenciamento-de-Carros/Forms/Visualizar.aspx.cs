@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gerenciamento_de_Carros.Classes;
+using Gerenciamento_de_Carros.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +13,23 @@ namespace Gerenciamento_de_Carros.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Carro> c = BuascarCarros();
-            Repeater1.DataSource = 1;
-            Repeater1.DataBind();
+            if (!Page.IsPostBack)
+            {
+                
+            }
+
+            CarroBO carroBO = new CarroBO();
+            List<Carro> listaDeCarros = carroBO.RetornarCarros();
+
+            if (listaDeCarros != null)
+            {
+                Repeater1.DataSource = listaDeCarros;
+                Repeater1.DataBind();
+            }
+            else
+            {
+                lblMensagem.Text = "Nenhum Registro";
+            }
         }
     }
 }
