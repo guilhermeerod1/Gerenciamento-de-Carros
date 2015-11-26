@@ -19,7 +19,7 @@ namespace Gerenciamento_de_Carros.Forms
             }
 
             CarroBO carroBO = new CarroBO();
-            List<Carro> listaDeCarros = carroBO.RetornarCarros();
+            List<Carro> listaDeCarros = carroBO.RetornarCarro();
 
             if (listaDeCarros != null)
             {
