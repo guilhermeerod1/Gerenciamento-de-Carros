@@ -14,6 +14,7 @@
             <ItemTemplate></ItemTemplate>
             <FooterTemplate></FooterTemplate>
         </asp:Repeater>
+        <asp:Label ID="lblMensagem" runat="server" Text="Label"></asp:Label>
     </div>
     </form>
 </body>
