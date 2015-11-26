@@ -9,7 +9,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+        <asp:Repeater ID="Repeater1" runat="server">
+            <HeaderTemplate></HeaderTemplate>
+            <ItemTemplate></ItemTemplate>
+            <FooterTemplate></FooterTemplate>
+        </asp:Repeater>
     </div>
     </form>
 </body>
