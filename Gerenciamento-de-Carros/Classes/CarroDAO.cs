@@ -30,7 +30,7 @@ namespace Gerenciamento_de_Carros.Classes
             conexao.Close();
         }
 
-        public Carro retornarCarro(int id)
+        public Carro Retornar(int id)
         {
             Carro c = null;
 
@@ -109,7 +109,7 @@ namespace Gerenciamento_de_Carros.Classes
 
         }
 
-        public int atualizar(Carro carro)
+        public int Atualizar(Carro carro)
         {
             int qtdRegistrosAfetados = 0;
 
@@ -120,9 +120,7 @@ namespace Gerenciamento_de_Carros.Classes
             int km = Convert.ToInt32(carro.Km);
             string cor = carro.Cor;
             string combustivel = carro.Combustivel;
-
-            SqlConnection conexao = new SqlConnection();
-
+                        
             StringBuilder sb = new StringBuilder();
             sb.Append(" UPDATE Carro SET");
             sb.Append(" Modelo = @Modelo, Preco = @Preco, AnoModelo = @AnoModelo, Km = @Km, Cor = @Cor, Combustivel = @Combustivel");
@@ -156,12 +154,12 @@ namespace Gerenciamento_de_Carros.Classes
 
         }
 
-        public List<Carro> RetornarCarros()
+        public List<Carro> Retornar()
         {
             List<Carro> carros = null;
 
             StringBuilder sql = new StringBuilder();
-            sql.Append(" SELECT Modelo, Preco, AnoModelo, Km, Cor, Combustivel");
+            sql.Append(" SELECT Id, Modelo, Preco, AnoModelo, Km, Cor, Combustivel");
             sql.Append(" FROM Carro");
 
             SqlCommand comando = new SqlCommand();
@@ -174,19 +172,18 @@ namespace Gerenciamento_de_Carros.Classes
             if (reader.HasRows)
             {
                 carros = new List<Carro>();
-                Carro c;
-
+                
                 while (reader.Read())
                 {
-                    c = new Carro();
+                    Carro c = new Carro();
 
                     c.Id = Convert.ToInt32(reader["Id"]);
                     c.Modelo = reader["Modelo"].ToString();
-                    c.Preco = Convert.ToInt32(reader["DataAdmissao"]);
-                    c.AnoModelo = Convert.ToInt32(reader["DataAdmissao"]);
-                    c.Km = Convert.ToInt32(reader["DataAdmissao"]);
-                    c.Cor = reader["Modelo"].ToString();
-                    c.Combustivel = reader["Modelo"].ToString();
+                    c.Preco = Convert.ToInt32(reader["Preco"]);
+                    c.AnoModelo = Convert.ToInt32(reader["AnoModelo"]);
+                    c.Km = Convert.ToInt32(reader["Km"]);
+                    c.Cor = reader["Cor"].ToString();
+                    c.Combustivel = reader["Combustivel"].ToString();
 
                     carros.Add(c);
                 }
@@ -195,7 +192,7 @@ namespace Gerenciamento_de_Carros.Classes
             return carros;
         }
 
-        public int deletar(int idCarro)
+        public int Deletar(int idCarro)
         {
             int qtdRegistrosAfetados = 0;
 

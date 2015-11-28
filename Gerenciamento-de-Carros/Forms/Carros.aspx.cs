@@ -70,7 +70,7 @@ namespace Gerenciamento_de_Carros.Forms
                 carro.Cor = txtCor.Text;
                 carro.Combustivel = txtCombustivel.Text;
 
-                carroBO.InserirCarro(carro);
+                lblMensagem.Text = carroBO.InserirCarro(carro);
             }
             else
             {
@@ -85,7 +85,7 @@ namespace Gerenciamento_de_Carros.Forms
                 carro.Cor = txtCor.Text;
                 carro.Combustivel = txtCombustivel.Text;
 
-                carroBO.AtualizarCarro(carro);
+                lblMensagem.Text = carroBO.AtualizarCarro(carro);
             }
         }
     }

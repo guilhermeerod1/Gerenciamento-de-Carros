@@ -9,31 +9,22 @@ namespace Gerenciamento_de_Carros.Classes
 {
     public class CarroBO
     {
-        private string mensagem;
 
-        public string Inserir(Carro c)
+        public string InserirCarro(Carro c)
         {
             CarroDAO carroDAO = new CarroDAO();
-            string mensagem = "";
+            string mensagem = "Inserção efetuada com sucesso! Quantidade de registros alterados: ";
 
             try
             {
                 carroDAO.AbrirConexao();
 
-                carroDAO.Inserir(c);
+                mensagem += carroDAO.Inserir(c);
 
-            }
-            catch (SqlException ex)
-            {
-                mensagem = "Erro relacionado ao método Inserir()." + ex.Message;
-            }
-            catch (ArgumentException ex)
-            {
-                mensagem = "Erro na connection string." + ex.Message;
             }
             catch (Exception ex)
             {
-                mensagem = ex.Message;
+                mensagem = "Erro relacionado ao método Inserir(). " + ex.Message;
             }
             finally
             {
@@ -43,7 +34,7 @@ namespace Gerenciamento_de_Carros.Classes
             return mensagem;
         }
 
-        public List<Carro> RetornarCarro()
+        public List<Carro> RetornarCarros()
         {
             CarroDAO carroDao = new CarroDAO();
 
@@ -53,11 +44,12 @@ namespace Gerenciamento_de_Carros.Classes
             {
                 carroDao.AbrirConexao();
 
-                carros = carroDao.RetornarCarros();
+                carros = carroDao.Retornar();
             }
-            catch (SQLException ex)
+            catch (Exception ex)
             {
-                mensagem = "Erro relacionado ao método RetornarCarro()." + ex.Message;
+                string mensagem = "Erro relacionado ao método RetornarCarro(). " + ex.Message;
+                return null;
             }
             finally
             {
@@ -78,13 +70,14 @@ namespace Gerenciamento_de_Carros.Classes
             {
                 carroDAO.AbrirConexao();
 
-                c = carroDAO.retornarCarro(idCarro);
+                c = carroDAO.Retornar(idCarro);
 
             }
-            catch (SQLException ex)
+            catch (Exception ex)
             {
 
-                mensagem = "Erro relacionado método RetornarCarro()." + ex.Message;
+                string mensagem = "Erro relacionado método RetornarCarro(). " + ex.Message;
+                return null;
 
             }
             finally
@@ -99,15 +92,15 @@ namespace Gerenciamento_de_Carros.Classes
         public string DeletarCarro(int idCarro)
         {
             CarroDAO carroDAO = new CarroDAO();
-            string mensagem = "";
+            string mensagem = "Remoção efetuada com sucesso! Quantidade de registros alterados: ";
 
             try
             {
                 carroDAO.AbrirConexao();
 
-                carroDAO.deletar(idCarro);
+                mensagem += carroDAO.Deletar(idCarro);
             }
-            catch (SQLException ex)
+            catch (Exception ex)
             {
                 mensagem = "Erro relacionado ao método DeletarCarro()." + ex.Message;
             }
@@ -119,43 +112,22 @@ namespace Gerenciamento_de_Carros.Classes
             return mensagem;
         }
 
-        public string InserirCarro(Carro carro)
+        public string AtualizarCarro(Carro c)
         {
             CarroDAO carroDao = new CarroDAO();
+            string mensagem = "Atualização efetuada com sucesso! Quantidade de registros alterados: ";
 
             try
             {
                 carroDao.AbrirConexao();
 
-                carroDao.Inserir(carro);
+                mensagem += carroDao.Atualizar(c);
+
             }
 
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                mensagem = "Erro relacionado método InserirCarro()." + ex.Message;
-            }
-            finally
-            {
-                carroDao.FecharConexao();
-            }
-
-            return mensagem;
-        }
-
-        public string AtualizarCarro(Carro c)
-        {
-            CarroDAO carroDao = new CarroDAO();
-
-            try
-            {
-                carroDao.FecharConexao();
-
-                carroDao.atualizar(c);
-            }
-
-            catch (SqlException ex)
-            {
-                mensagem = "Erro relacionado método AtualizarCarro()." + ex.Message;
+                mensagem = "Erro relacionado ao método AtualizarCarro(). " + ex.Message;
             }
             finally
             {

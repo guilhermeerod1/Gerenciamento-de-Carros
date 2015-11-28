@@ -4,9 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Carros - Cadastro e Edição</title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/style.css" />
 </head>
 <body>
+    <header>
+        Gerenciamento de Carros
+    </header>
+    <nav>
+        <a href="Visualizar.aspx" class="lnk">Visualizar Carros Registrados</a><br />
+    </nav>
+    <main>    
     <form id="form1" runat="server">
         <fieldset>
             <legend>Cadastro de Carros</legend>
@@ -36,11 +44,14 @@
                     <td><asp:TextBox ID="txtCombustivel" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td><asp:Button ID="btnLimpar" runat="server" Text="Button" /></td>
-                    <td><asp:Button ID="btnCadastrar" runat="server" Text="Button" /></td>
+                    <td><asp:Button ID="btnLimpar" runat="server" Text="Limpar" OnClick="btnLimpar_Click" /></td>
+                    <td><asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" /></td>
                 </tr>
             </table>
+            <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
         </fieldset>
     </form>
+    </main>
+    <footer>Criado por: Felipe Mendes e Guilherme Estrada Rodrigues</footer>
 </body>
 </html>
