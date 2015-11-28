@@ -24,9 +24,10 @@
                             <th>Modelo</th>
                             <th>Preço</th>
                             <th>Ano do Modelo</th>
+                            <th>Km</th>
                             <th>Cor</th>
                             <th>Combustível</th>
-                            <th colspan="2">Ações</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
